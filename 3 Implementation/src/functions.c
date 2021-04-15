@@ -90,3 +90,4 @@ int cot(cal *obj)
     return res;
 }
  
+
