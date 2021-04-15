@@ -28,7 +28,7 @@ The requirements will meet the cost & depending on the market and the project it
 ## Defining Our System
   **Architecture:**
   
-   
+   ![Architecture](https://github.com/richik500/MiniProject/blob/main/images/CALCULATOR.png)
 
    
  - The Scientific Calculator application has the following functions:
