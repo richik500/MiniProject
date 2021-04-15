@@ -31,7 +31,7 @@ endif
 
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
 .PHONY : all test coverage run clean 
-
+ 
 all:$(BUILD_DIR)
 	gcc main.c $(SRC) $(INC) -lm -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
