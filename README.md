@@ -1,4 +1,4 @@
-# # SDLC Activity Based Learning
+# SDLC Activity Based Learning
 This repo will contain my mini project of LTTS
 # Calculator  
 
