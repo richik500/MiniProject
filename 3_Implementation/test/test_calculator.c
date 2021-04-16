@@ -1,5 +1,5 @@
 /**
- * @file unit_test.c
+ * @file test_calculator.c
  * @brief contains all the test functions with expexted output by providing default input.
  * @copyright Copyright (c) 2021
  */
