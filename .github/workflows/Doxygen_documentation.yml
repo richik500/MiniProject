@@ -1,0 +1,22 @@
+  
+name: Doxygen - documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install doxygen
+      run: sudo apt-get install doxygen
+    - name: install graphviz
+      run: sudo apt-get install graphviz
+    - name: make
+      run: make -C 3_Implementation/ doc
