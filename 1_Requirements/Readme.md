@@ -1,7 +1,7 @@
 # Requirements
 ## Introduction
 
-Scientific calculators usually have more features than a standard function calculator like Arithmetic, Scientific and Trigonometric Functions.
+A calculator is a device which performs some mathematical operations like arthmetic  & scientific operations. Scientific calculators usually have more features than a standard function calculator like Arithmetic, Scientific and Trigonometric Functions.
 
 Here in this project some of those features will be implemented by C programming which will be able to operate on Windows and Linux.
 
