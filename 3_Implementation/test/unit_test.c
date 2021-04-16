@@ -3,8 +3,9 @@
  * @brief contains all the test functions with expexted output by providing default input.
  * @copyright Copyright (c) 2021
  */
-#include "unity.h"
-#include "calc_header.h"
+#include "../unity/unity.h"
+#include "../inc/calc_header.h"
+#include "../src/functions.c"
 #define PROJECT_NAME    "CALCULATOR"
 cal testcal={8,4};
 cal testcal0 = { 4,4 };
