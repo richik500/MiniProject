@@ -2,6 +2,10 @@
 This repo will contain my mini project of LTTS
 # Calculator  
 
+| Build | Code Analysis |Git inspector | 
+|-------------|--------------------------------------------------------------|------------|
+[![C/C++ CI Build](https://github.com/richik500/MiniProject/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/richik500/MiniProject/actions/workflows/c-cpp.yml) | [![cppcheck-action](https://github.com/richik500/MiniProject/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/richik500/MiniProject/actions/workflows/cppcheck.yml) | [![Contribution Check - Git Inspector](https://github.com/richik500/MiniProject/actions/workflows/Git_Inspector.yml/badge.svg)](https://github.com/richik500/MiniProject/actions/workflows/Git_Inspector.yml)
+
 
 ## Folder Structure
 
