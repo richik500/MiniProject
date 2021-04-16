@@ -6,13 +6,14 @@
 #include "../unity/unity.h"
 #include "../inc/calc_header.h"
 #include "../src/functions.c"
+#include<math.h>
 #define PROJECT_NAME    "CALCULATOR"
-cal testcal={8,4};
-cal testcal0 = { 4,4 };
-cal testcal2 = { 30,0 };
-cal testcal3 = { -30,0 };
-cal testcal1 = { -4,-1 };
-cal testdiv0 = { 4,0 };
+static cal testcal={8,4};
+static cal testcal0 = { 4,4 };
+static cal testcal2 = { 30,0 };
+static cal testcal3 = { -30,0 };
+statsic cal testcal1 = { -4,-1 };
+statsic cal testdiv0 = { 4,0 };
 /* Prototypes for all the test functions */
 void test_add(void);
 void test_sub(void);
