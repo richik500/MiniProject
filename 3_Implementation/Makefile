@@ -1,73 +1,42 @@
-
-# Name of the project
-PROJ_NAME = CALCULATOR
-TEST_PROJ_NAME = Test_$(PROJ_NAME)
-
-BUILD_DIR = Build
-# All source code files
-SRC = src/functions.c
-
-# All test source files
-TEST_SRC = test/unit_test.c\
-unity/unity.c
-
-INC = -Iinc\
--Iunity
-#Library Inlcudes
-#if working with math.h 
-#INCLUDE_LIBS = -lm
-#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
+PROJECT_NAME = Calculator
+TEST_NAME=TEST_$(PROJECT_NAME)
+DO_IT =  src/functions.c 
+TEST_CASE= test/unit_test.c unity/unity.c
+COVERAGE_NAME=coverage_$(PROJECT_NAME)
+#To check the OS windows or Liux depending on that extension is set
 ifdef OS
-   RM = del /q
-   FixPath = $(subst /,\,$1)
-   EXEC = exe
+	RM = del /q
+	FixPath=$(subst /,\,$1)
+	EXEC=exe
+	editor=notepad
 else
-   ifeq ($(shell uname), Linux)
-      RM = rm -rf
-      FixPath = $1
-	  EXEC = out
-   endif
+	ifeq ($(shell uname), Linux)
+		RM=rm -rf
+		FixPath=$1
+			EXEC=out
+			editor=cat
+	endif
 endif
 
-# Makefile will not run target command if the name with file already exists. To override, use .PHONY
-.PHONY : all test coverage run clean 
+#Makefile will not run target command if the name with the file already exists. To override, use PHONY
+.PHONY : all test coverage run clean doc
 
-all:$(BUILD_DIR)
-	gcc main.c $(SRC) $(INC) -lm -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+$(PROJECT_NAME) : $(SRC) 
+	gcc main.c  -I -c $(DO_IT) -o $(call  FixPath,$(PROJECT_NAME).$(EXEC))
+run: $(PROJECT_NAME)
+	./$(PROJECT_NAME).$(EXEC)
+test:
+	gcc test/test_calculator.c -I -c unity/unity.c -o test/$(TEST_NAME).$(EXEC)
+	./test/$(TEST_NAME).$(EXEC)
+coverage:$(SRC)
+		gcc -fprofile-arcs -ftest-coverage main.c -I -c $(DO_IT) -o $(COVERAGE_NAME).$(EXEC)
+		./$(COVERAGE_NAME).$(EXEC)
+		gcov -a main.c
+		$(editor) main.c.gcov
 
-# Call `make run` to run the application
-run: $(BUILD_DIR)
-	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
-
-#Coverage	
-coverage:$(BUILD_DIR)
-	gcc $(TEST_SRC) $(SRC) $(INC) -fprofile-arcs -ftest-coverage -lm -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-   #perform gcov -a *.gcno to check coverage
-
-# Remove all the built files, invoke by `make clean`
 clean:
-	$(RM) $(call FixPath,$(BUILD_DIR)/*)
-	$(RM) *.gcda *.gcov *gcno 
-	$(RM) document/html*
-
-#cppcheck static code analysis	
-cppcheck:
-	cppcheck --enable=all --check-config --suppress=missingIncludeSystem main.c $(SRC) -Iinc 
-	
-valgrind:
-	gcc $(TEST_SRC) $(SRC) $(INC) -lm -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-	valgrind $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
- 
-# Build and run the unit tests	
-test:$(BUILD_DIR)
-	gcc $(TEST_SRC) $(SRC) $(INC) -lm -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-		$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-
-#doxygen documentation
-doc:
-	make -C document
-
-$(BUILD_DIR):
-	mkdir $(BUILD_DIR)		
-	
+	$(RM) *.$(EXEC)
+	$(RM) *.gcn
+	$(RM) *.gcov
+	$(RM) *.gcda
+	$(RM) *.gcno
