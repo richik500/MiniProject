@@ -1,7 +1,7 @@
 PROJECT_NAME = Calculator
 TEST_NAME=TEST_$(PROJECT_NAME)
 DO_IT =  src/functions.c 
-TEST_CASE= test/unit_test.c unity/unity.c
+TEST_CASE= test/test_calculator.c unity/unity.c 
 COVERAGE_NAME=coverage_$(PROJECT_NAME)
 #To check the OS windows or Liux depending on that extension is set
 ifdef OS
